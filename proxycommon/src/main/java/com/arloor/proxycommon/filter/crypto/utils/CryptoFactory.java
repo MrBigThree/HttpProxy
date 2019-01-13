@@ -1,7 +1,5 @@
 package com.arloor.proxycommon.filter.crypto.utils;
 
-import com.arloor.proxycommon.filter.crypto.utils.cryptoimpl.DESdecrypter;
-import com.arloor.proxycommon.filter.crypto.utils.cryptoimpl.DESencrypter;
 
 import java.util.HashMap;
 import java.util.function.Supplier;
@@ -16,8 +14,6 @@ public class CryptoFactory {
         encyptTypeMap.put(CryptoType.SIMPLE, Encrypter::simple);
         decyptTypeMap.put(CryptoType.SIMPLE, Decrypter::simple);
 
-        encyptTypeMap.put(CryptoType.DES, DESencrypter::new);
-        decyptTypeMap.put(CryptoType.DES, DESdecrypter::new);
     }
 
     public static Encrypter createEncrypter(CryptoType type){
