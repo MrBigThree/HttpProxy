@@ -170,22 +170,22 @@ public class ProxyConnectionHandler extends ChannelInboundHandlerAdapter {
             logger.error(ExceptionUtil.getMessage(cause));
         }
 
-        /**
-         * 当本channel被关闭时，及时关闭对应的另一个channel
-         * 出现异常和正常关闭都会导致本channel被关闭
-         *
-         * @param ctx
-         * @throws Exception
-         */
-        @Override
-        public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-            if (localChannel != null && localChannel.isActive()) {
-                localChannel.close().addListener(future -> {
-                    logger.info("webserver关闭连接，因此关闭到browser连接");
-                });
-            }
-            super.channelInactive(ctx);
-        }
+//        /**
+//         * 当本channel被关闭时，及时关闭对应的另一个channel
+//         * 出现异常和正常关闭都会导致本channel被关闭
+//         *
+//         * @param ctx
+//         * @throws Exception
+//         */
+//        @Override
+//        public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+//            if (localChannel != null && localChannel.isActive()) {
+//                localChannel.close().addListener(future -> {
+//                    logger.info("webserver关闭连接，因此关闭到browser连接");
+//                });
+//            }
+//            super.channelInactive(ctx);
+//        }
     }
 
     /**
