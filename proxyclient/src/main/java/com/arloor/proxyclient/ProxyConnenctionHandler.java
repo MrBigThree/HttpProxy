@@ -112,7 +112,7 @@ public class ProxyConnenctionHandler extends ChannelInboundHandlerAdapter {
             if (localChannel != null && localChannel.isActive())
                 localChannel.writeAndFlush(Unpooled.buffer()).addListener(future -> {
                     localChannel.close().addListener((future1 -> {
-                        logger.info("返回响应 0字节: 代理服务器关闭连接，因此关闭到浏览器的连接");
+                        logger.info("返回响应 0字节: 代理服务器关闭连接，因此关闭到浏览器的连接("+localChannel+")");
                     }));
                 });
             super.channelInactive(ctx);

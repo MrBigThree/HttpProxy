@@ -182,7 +182,7 @@ public class ProxyConnectionHandler extends ChannelInboundHandlerAdapter {
             if (localChannel != null && localChannel.isActive()) {
                 localChannel.writeAndFlush(Unpooled.buffer()).addListener(future -> {
                     localChannel.close().addListener(future1 -> {
-                        logger.info("返回响应 0字节: webserver关闭连接，因此关闭到browser连接");
+                        logger.info("discard: webserver关闭连接("+ctx.channel()+")，因此关闭到browser连接");
                     });
                 });
             }
