@@ -6,6 +6,7 @@ import com.arloor.proxycommon.httpentity.HttpResponse;
 import com.arloor.proxycommon.util.ExceptionUtil;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;
+import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.*;
 import io.netty.channel.socket.SocketChannel;
@@ -82,9 +83,11 @@ public class ProxyConnenctionHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         if (remoteChannel != null && remoteChannel.isActive())
-            remoteChannel.close().addListener((future -> {
-                logger.info("浏览器关闭连接，因此关闭到代理服务器的连接");
-            }));
+            remoteChannel.writeAndFlush(PooledByteBufAllocator.DEFAULT.buffer()).addListener(future -> {
+                remoteChannel.close().addListener((future1 -> {
+                    logger.info("浏览器关闭连接，因此关闭到代理服务器的连接");
+                }));
+            });
         super.channelInactive(ctx);
     }
 

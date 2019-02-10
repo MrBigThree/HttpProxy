@@ -128,9 +128,11 @@ public class ProxyConnectionHandler extends ChannelInboundHandlerAdapter {
 //        logger.info(""+ctx.channel().isWritable());
 //        logger.info(""+localWritable.get());
         if (remoteChannel != null && remoteChannel.isActive()) {
-            remoteChannel.close().addListener(future -> {
-                logger.info("browser关闭连接，因此关闭到webserver连接");
-            });
+            remoteChannel.writeAndFlush(Unpooled.buffer()).addListener(future1 ->{
+                remoteChannel.close().addListener(future -> {
+                    logger.info("browser关闭连接，因此关闭到webserver连接");
+                });
+            } );
         }
         super.channelInactive(ctx);
     }
