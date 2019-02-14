@@ -11,7 +11,7 @@ public interface Encrypter {
 
     static Encrypter simple(){
         return (buf)->{
-            logger.debug("写时加密(字节取反)");
+//            logger.debug("写时加密(字节取反)");
             int lengh=buf.writerIndex();
             byte[] bytes=new byte[lengh];
             buf.readBytes(bytes);

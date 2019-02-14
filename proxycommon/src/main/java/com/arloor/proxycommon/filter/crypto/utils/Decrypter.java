@@ -12,7 +12,7 @@ public interface Decrypter {
 
     static Decrypter simple(){
         return (buf)->{
-            logger.debug("读时解密(字节取反)");
+//            logger.debug("读时解密(字节取反)");
             int lengh=buf.writerIndex();
             byte[] bytes=new byte[lengh];
             buf.readBytes(bytes);
