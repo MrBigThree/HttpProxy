@@ -16,6 +16,11 @@
 
 这是一个轻量、稳定、高性能的http代理，仅仅依赖netty和日志框架，实现http中间人代理和https隧道代理。google、youtube视频、测试代理速度、作为git的代理、作为docker的代理等场景都运行完美。
 
+
+## 电报讨论组
+
+电报讨论组 https://t.me/popstary
+
 ## 运行日志
 
 客户端运行日志
