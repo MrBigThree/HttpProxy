@@ -1,3 +1,12 @@
+## 推荐新项目
+
+[arloor/forwardproxy](https://github.com/arloor/forwardproxy)一个新的基于netty的http代理。
+
+看自己一年前的代码就会发现有多糟糕，所以有了这个新的项目，其主要改进就是利用了netty的http编解码器，以缩减自己的代码量，最终代码量共计大约500行。可以看看
+
+
+------------------------------------------------------------------
+
 [![](https://travis-ci.org/arloor/HttpProxy.svg?branch=master)](https://travis-ci.org/arloor/HttpProxy)
 [![](https://img.shields.io/github/release/arloor/HttpProxy.svg?style=flat)](https://github.com/arloor/HttpProxy/releases)
 [![](https://img.shields.io/github/last-commit/arloor/HttpProxy.svg?style=flat)](https://github.com/arloor/HttpProxy/commit/master)
